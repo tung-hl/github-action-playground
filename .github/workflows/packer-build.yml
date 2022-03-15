@@ -1,0 +1,14 @@
+
+name: Custom Action POC
+
+on: [push]
+
+jobs:
+  custom_test:
+    runs-on: ubuntu-latest
+    name: We test it locally with act
+    steps:
+      - name: Initialize Packer Template
+        uses: ./
+        with:
+          command: init
