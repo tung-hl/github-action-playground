@@ -1,4 +1,4 @@
-FROM hashicorp/packer:1.8
+FROM hashicorp/packer:1.7.3
 
 # Install Goss Packer Provisioner
 RUN wget 'https://github.com/YaleUniversity/packer-provisioner-goss/releases/download/v3.0.3/packer-provisioner-goss-v3.0.3-linux-amd64.tar.gz' -O packer-provisioner-goss.tar.gz && \
