@@ -1,5 +1,4 @@
 name: 'My Custom Action'
-description: 'My Custom Action'
 
 on:
   workflow_call:
