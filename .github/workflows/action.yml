@@ -3,16 +3,7 @@ description: 'My Custom Action'
 
 on:
   workflow_call:
-    inputs:
-      who-to-greet:  # id of input
-        description: 'Who to greet'
-        required: true
-        default: 'World'
-    outputs:
-      random-number:
-        description: "Random number"
-        value: ${{ steps.random-number-generator.outputs.random-id }}
-
+    
 env:
   ACTION_VAR_1: 'action_variable_1_value'  
 
