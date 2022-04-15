@@ -3,7 +3,7 @@ name: 'My Custom Action'
 on:
   workflow_call:
     inputs:
-      blah:
+      environment:
           type: string
           required: true
     
@@ -14,8 +14,9 @@ jobs:
   packer_build:
     name: Packer Build
     runs-on: ubuntu-latest
+    environment: ${{ input.environment }}
     steps:
     - name: 'Print Variables'
       run: |
         echo ${{ env.ACTION_VAR_1 }}
-        echo ${{ inputs.blah }}
+        echo ${{ inputs.environment }}
