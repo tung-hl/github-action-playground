@@ -8,7 +8,7 @@ env:
 
 jobs:
   my_action:
-    name: My Action
+    name: my_action
     runs-on: ubuntu-latest
     
     steps:
@@ -16,3 +16,4 @@ jobs:
       id: print_vars
       run: |
         echo ${{ env.ACTION_VAR_1 }}
+        echo ${{ env.CALLER_VAR_1 }}
