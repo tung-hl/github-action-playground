@@ -5,6 +5,7 @@ on:
     inputs:
       environment:
           type: string
+          required: true
     
 env:
   ACTION_VAR_1: 'action_variable_1_value'
