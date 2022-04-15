@@ -1,29 +1,24 @@
-name: Packer GitHub Actions
-description: Run Packer commands
+name: my-github-actions
+description: Custom GitHub Action
 
-inputs:
-  command:
-    description: command to execute
-    required: true
-  arguments:
-    description: arguments for command
-    required: false
-  working_directory:
-    description: working directory for command (defaults to root)
-    required: false
-  target:
-    description: file(s) or directory to target
-    required: false
-    default: .
+on:
+  pull_request:
+    branches:
+      - main
 
-outputs:
-  command:
-    description: interpolated command (incl. arguments) that will be executed
+env:
+  ACTION_VAR_1: 'action_var_1_value'
 
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-
-branding:
-  color: blue
-  icon: package
+jobs:
+  custom_job:
+    runs-on: ubuntu-latest
+    name: custom-job
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      
+      - name: "Set Builder Role as Environment Variable"
+        run: |
+          echo ${{ env.ACTION_VAR_1 }}
+          echo ${{ env.CALLER_VAR_1 }}
