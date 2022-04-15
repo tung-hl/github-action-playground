@@ -4,7 +4,7 @@ on:
   workflow_call:
     
 env:
-  ACTION_VAR_1: 'action_variable_1_value'  
+  ACTION_VAR_1: 'action_variable_1_value'
 
 jobs:
   packer_build:
@@ -14,3 +14,4 @@ jobs:
     - name: 'Print Variables'
       run: |
         echo ${{ env.ACTION_VAR_1 }}
+        echo ${{ env.CALLER_VAR_1 }}
