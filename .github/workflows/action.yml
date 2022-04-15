@@ -15,7 +15,8 @@ env:
 
 jobs:
   packer_build:
-    name: 'Packer Build'
+    name: Packer Build
+    runs-on: ubuntu-latest
     steps:
     - name: 'Print Variables'
       run: |
