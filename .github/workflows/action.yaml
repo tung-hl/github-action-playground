@@ -1,19 +1,18 @@
-name: MyGitHubAction
-description: My GitHub Action
+name: my_action
+
+on:
+  workflow_call:
 
 env:
   ACTION_VAR_1: 'action_var_1_value'
 
 jobs:
-  action:
-    name: MyGitHubAction
+  my_action:
+    name: My Action
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      
-    - name: "Echo Variables"
+    - name: Print
+      id: print_vars
       run: |
         echo ${{ env.ACTION_VAR_1 }}
-        echo ${{ env.CALLER_VAR_1 }}
