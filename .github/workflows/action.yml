@@ -14,7 +14,7 @@ jobs:
   packer_build:
     name: Packer Build
     runs-on: ubuntu-latest
-    environment: ${{ input.environment }}
+    environment: ${{ inputs.environment }}
     steps:
     - name: 'Print Variables'
       run: |
