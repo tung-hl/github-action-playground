@@ -6,6 +6,8 @@ on:
       environment:
           type: string
           required: true
+      var_names:
+          type: string
     
 env:
   ACTION_VAR_1: 'action_variable_1_value'
@@ -20,3 +22,4 @@ jobs:
       run: |
         echo ${{ env.ACTION_VAR_1 }}
         echo ${{ inputs.environment }}
+        echo ${{ inputs.var_names }}
