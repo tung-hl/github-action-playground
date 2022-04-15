@@ -1,19 +1,19 @@
-name: my-github-actions
-description: Custom GitHub Action
+name: MyGitHubAction
+description: My GitHub Action
 
 env:
   ACTION_VAR_1: 'action_var_1_value'
 
 jobs:
-  custom_job:
+  action:
+    name: MyGitHubAction
     runs-on: ubuntu-latest
-    name: custom-job
     
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
       
-      - name: "Set Builder Role as Environment Variable"
-        run: |
-          echo ${{ env.ACTION_VAR_1 }}
-          echo ${{ env.CALLER_VAR_1 }}
+    - name: "Echo Variables"
+      run: |
+        echo ${{ env.ACTION_VAR_1 }}
+        echo ${{ env.CALLER_VAR_1 }}
