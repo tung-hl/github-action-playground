@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       environment:
-          type: environment
+          type: string
     
 env:
   ACTION_VAR_1: 'action_variable_1_value'
