@@ -13,6 +13,7 @@ jobs:
   packer_build:
     name: Packer Build
     runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
     steps:
     - name: 'Print Variables'
       run: |
