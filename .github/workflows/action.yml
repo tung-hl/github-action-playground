@@ -2,6 +2,9 @@ name: 'My Custom Action'
 
 on:
   workflow_call:
+    inputs:
+      environment:
+          type: environment
     
 env:
   ACTION_VAR_1: 'action_variable_1_value'
@@ -14,4 +17,4 @@ jobs:
     - name: 'Print Variables'
       run: |
         echo ${{ env.ACTION_VAR_1 }}
-        echo ${{ env.CALLER_VAR_1 }}
+        echo ${{ github.event.inputs.environment }}
