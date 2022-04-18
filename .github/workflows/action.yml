@@ -30,6 +30,8 @@ jobs:
         IFS=,
         var_name_array=(${{ inputs.additional_variable_names }})
         var_value_array=(${{ env.additional_variable_values }})
+        echo "${#var_name_array[@]}"
+        echo "${#var_value_array[@]}"
         for key in "${!var_name_array[@]}";
         do
           echo ${var_name_array[$key]}
