@@ -4,10 +4,12 @@ on:
   workflow_call:
     inputs:
       environment:
-          type: string
-          required: true
-      var_names:
-          type: string
+        type: string
+        required: true
+      additional_variable_names:
+        type: string
+      additional_variable_values:
+        type: string
     
 env:
   ACTION_VAR_1: 'action_variable_1_value'
@@ -18,6 +20,21 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
+    - name: 'Set Environment Variables'
+      run: |
+        VAR_NAMES=${{ inputs.additional_variable_names }}
+        VAR_VALUES=${{ inputs.additional_variable_values }}
+        if [ ! -z $VAR_NAMES ] && [ ! -z $VAR_VALUES ];
+        then
+          set -f;
+          IFS=,;
+          var_name_array=($VAR_NAMES)
+          var_value_array=($VAR_VALUES)
+          for key in "${!names_ary[@]}"
+            do 
+              echo "${var_name_array[$key]} -> ${var_value_array[$key]}"
+            done
+        fi
     - name: 'Print Variables'
       run: |
         echo ${{ env.ACTION_VAR_1 }}
