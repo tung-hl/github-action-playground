@@ -11,8 +11,8 @@ on:
         default: ""
     secrets:
       additional_variable_values:
-        type: string
-        default: ""
+        description: 'Var values.'
+        required: false
 jobs:
   packer_build:
     name: Packer Build
