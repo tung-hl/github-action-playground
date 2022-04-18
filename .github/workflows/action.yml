@@ -35,3 +35,4 @@ jobs:
       run: |
         echo ${{ env.ACTION_VAR_1 }}
         echo ${{ env.AWS_DEFAULT_REGION }}
+        echo ${{ env.AWS_DEFAULT_REGION_2 }}
