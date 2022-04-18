@@ -25,17 +25,12 @@ jobs:
     - name: 'Set Environment Variables'
       if: ${{ inputs.additional_variable_names != '' }} && ${{ inputs.additional_variable_values != '' }}
       run: |
-        VAR_NAMES=${{ inputs.additional_variable_names }}
-        VAR_VALUES=${{ inputs.additional_variable_values }}
-        echo $VAR_NAMES
-        echo $VAR_VALUES
         set -f
         IFS=,
-        var_name_array=($VAR_NAMES)
-        var_value_array=($VAR_VALUES)
+        var_name_array=(${{ inputs.additional_variable_names }})
+        var_value_array=(${{ inputs.additional_variable_values }})
         for key in "${!var_name_array[@]}";
         do 
-          echo "${var_name_array[$key]}=${var_value_array[$key]}";
           echo "${var_name_array[$key]}=${var_value_array[$key]}" >> $GITHUB_ENV
         done
     - name: 'Print Variables'
