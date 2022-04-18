@@ -33,7 +33,9 @@ jobs:
         IFS=,
         var_name_array=($VAR_NAMES)
         var_value_array=($VAR_VALUES)
-        for key in "${!names_ary[@]}";
+        echo $var_name_array
+        echo $var_value_array
+        for key in "${!var_name_array[@]}";
         do 
           echo "${var_name_array[$key]} -> ${var_value_array[$key]}";
         done
