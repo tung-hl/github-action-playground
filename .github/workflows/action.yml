@@ -31,7 +31,8 @@ jobs:
         var_name_array=(${{ inputs.additional_variable_names }})
         var_value_array=(${{ env.additional_variable_values }})
         for key in "${!var_name_array[@]}";
-        do 
+        do
+          echo "Set environment variable ${var_name_array[$key]}" 
           echo "${var_name_array[$key]}=${var_value_array[$key]}" >> $GITHUB_ENV
         done
     - name: 'Print Variables'
