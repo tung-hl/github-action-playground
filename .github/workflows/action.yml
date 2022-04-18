@@ -22,6 +22,7 @@ jobs:
     - name: 'Print Input'
       run: |
         echo ${{ inputs.additional_variable_names }}
+        echo ${{ env.additional_variable_values }}
     - name: 'Set Environment Variables'
       if: ${{ inputs.additional_variable_names != '' }} && ${{ env.additional_variable_values != '' }}
       run: |
