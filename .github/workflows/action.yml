@@ -33,11 +33,10 @@ jobs:
         IFS=,
         var_name_array=($VAR_NAMES)
         var_value_array=($VAR_VALUES)
-        echo $var_name_array
-        echo $var_value_array
         for key in "${!var_name_array[@]}";
         do 
-          echo "${var_name_array[$key]} -> ${var_value_array[$key]}";
+          echo "${var_name_array[$key]}=${var_value_array[$key]}";
+          echo "${var_name_array[$key]}=${var_value_array[$key]}" >> $GITHUB_ENV
         done
     - name: 'Print Variables'
       run: |
