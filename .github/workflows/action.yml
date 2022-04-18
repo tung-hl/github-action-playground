@@ -24,6 +24,8 @@ jobs:
       run: |
         VAR_NAMES=${{ inputs.additional_variable_names }}
         VAR_VALUES=${{ inputs.additional_variable_values }}
+        echo $VAR_NAMES
+        echo $VAR_VALUES
         if [ ! -z $VAR_NAMES ] && [ ! -z $VAR_VALUES ];
         then
           set -f;
