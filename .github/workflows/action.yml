@@ -27,7 +27,7 @@ jobs:
         var_name_array=(${{ inputs.additional_variable_names }})
         for key in "${!var_name_array[@]}";
         do
-          echo "Set environment variable ${var_name_array[$key]}" 
+          echo ${var_name_array[$key]}
         done
     - name: 'Print Variables'
       run: |
