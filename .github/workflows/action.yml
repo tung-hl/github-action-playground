@@ -9,13 +9,10 @@ on:
       additional_variable_names:
         type: string
         default: ""
+    secrets:
       additional_variable_values:
         type: string
         default: ""
-    env:
-      AWS_DEFAULT_REGION:
-        description: 'Default AWS region used to build the AMI.'
-        required: true
 jobs:
   packer_build:
     name: Packer Build
@@ -23,12 +20,12 @@ jobs:
     environment: ${{ inputs.ENVIRONMENT }}
     steps:
     - name: 'Set Environment Variables'
-      if: ${{ inputs.additional_variable_names != '' }} && ${{ inputs.additional_variable_values != '' }}
+      if: ${{ inputs.additional_variable_names != '' }} && ${{ secrets.additional_variable_values != '' }}
       run: |
         set -f
         IFS=,
         var_name_array=(${{ inputs.additional_variable_names }})
-        var_value_array=(${{ inputs.additional_variable_values }})
+        var_value_array=(${{ secrets.additional_variable_values }})
         for key in "${!var_name_array[@]}";
         do 
           echo "${var_name_array[$key]}=${var_value_array[$key]}" >> $GITHUB_ENV
