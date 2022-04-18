@@ -3,7 +3,7 @@ name: 'My Custom Action'
 on:
   workflow_call:
     inputs:
-      environment:
+      ENVIRONMENT:
         type: string
         required: true
       additional_variable_names:
@@ -12,19 +12,15 @@ on:
       additional_variable_values:
         type: string
         default: ""
-    secrets:
-      AWS_DEFAULT_REGION:
-        description: 'Default AWS region used to build the AMI.'
     
 env:
   ACTION_VAR_1: 'action_variable_1_value'
-  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
 
 jobs:
   packer_build:
     name: Packer Build
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.ENVIRONMENT }}
     steps:
     - name: 'Set Environment Variables'
       if: ${{ inputs.additional_variable_names != '' }} && ${{ inputs.additional_variable_values != '' }}
@@ -40,4 +36,3 @@ jobs:
     - name: 'Print Variables'
       run: |
         echo ${{ env.ACTION_VAR_1 }}
-        echo ${{ env.AWS_DEFAULT_REGION }}
