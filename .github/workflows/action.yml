@@ -3,9 +3,6 @@ name: 'My Custom Action'
 on:
   workflow_call:
     inputs:
-      ENVIRONMENT:
-        type: string
-        required: true
       additional_variable_names:
         type: string
         default: ""
@@ -21,7 +18,6 @@ jobs:
   packer_build:
     name: Packer Build
     runs-on: ubuntu-latest
-    environment: ${{ inputs.ENVIRONMENT }}
     steps:
     - name: 'Set Environment Variables'
       if: ${{ inputs.additional_variable_names != '' }} && ${{ env.additional_variable_values != '' }}
