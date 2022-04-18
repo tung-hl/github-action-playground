@@ -29,6 +29,14 @@ jobs:
         VAR_VALUES=${{ inputs.additional_variable_values }}
         echo $VAR_NAMES
         echo $VAR_VALUES
+        set -f
+        IFS=,
+        var_name_array=($VAR_NAMES)
+        var_value_array=($VAR_VALUES)
+        for key in "${!names_ary[@]}";
+        do 
+          echo "${var_name_array[$key]} -> ${var_value_array[$key]}";
+        done
     - name: 'Print Variables'
       run: |
         echo ${{ env.ACTION_VAR_1 }}
