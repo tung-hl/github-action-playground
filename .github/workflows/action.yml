@@ -27,7 +27,7 @@ jobs:
         echo ${{ inputs.additional_variable_names }}
         echo ${{ inputs.additional_variable_values }}
     - name: 'Set Environment Variables'
-      if: ${{ inputs.additional_variable_names != '' }} && ${{ secrets.additional_secret_values != '' }}
+      if: ${{ inputs.additional_variable_names != '' }} && ${{ env.additional_secret_values != '' }}
       run: |
         VAR_NAMES=${{ inputs.additional_variable_names }}
         VAR_VALUES=${{ secrets.additional_secret_values }}
