@@ -30,7 +30,7 @@ jobs:
       if: ${{ inputs.additional_variable_names != '' }} && ${{ inputs.additional_variable_values != '' }}
       run: |
         var_names=${{ inputs.additional_variable_names }}
-        var_values=${{ inputs.additional_variable_values }}
+        var_values=${{ secrets.additional_secret_values }}
         set -f
         IFS=,
         var_name_array=($var_names)
