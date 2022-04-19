@@ -6,13 +6,16 @@ on:
       additional_variable_names:
         type: string
         default: ""
-    secrets:
       additional_variable_values:
+        type: string
+        default: ""
+    secrets:
+      additional_secret_values:
         description: 'Var values.'
         required: false
 
 env:
-  additional_variable_values: ${{ secrets.additional_variable_values }}
+  additional_secret_values: ${{ secrets.additional_secret_values }}
 
 jobs:
   packer_build:
@@ -22,14 +25,14 @@ jobs:
     - name: 'Print Input'
       run: |
         echo ${{ inputs.additional_variable_names }}
-        echo ${{ env.additional_variable_values }}
+        echo ${{ inputs.additional_variable_values }}
     - name: 'Set Environment Variables'
-      if: ${{ inputs.additional_variable_names != '' }} && ${{ env.additional_variable_values != '' }}
+      if: ${{ inputs.additional_variable_names != '' }} && ${{ inputs.additional_variable_values != '' }}
       run: |
         set -f
         IFS=,
         var_name_array=(${{ inputs.additional_variable_names }})
-        var_value_array=(${{ env.additional_variable_values }})
+        var_value_array=(${{ inputs.additional_variable_values }})
         echo "${#var_name_array[@]}"
         echo "${#var_value_array[@]}"
         for key in "${!var_name_array[@]}";
